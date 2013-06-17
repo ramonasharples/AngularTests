@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="todoApp">
+<head>
+	<meta charset="utf-8">
+  	<title>Dave's To Do App</title>
+  	<link rel="stylesheet" href="stylesheets/foundation.min.css">
+  	<link rel="stylesheet" href="stylesheets/todo.css">
+  	<script src="scripts/angular.js"></script>
+  	<script src="scripts/todo.js"></script>
+</head>
+
+<body ng-controller="AppCtrl">
+<div><h2>{{name}}'s To Do list:</h2></div>
+
+<div> 
+	Remaining: <strong>{{remaining()}}</strong> of <strong>{{items.length}}</strong> 
+	<a href ng-click="archive()">[archive]</a>
+</div>
+</p>
+<ul class="unstyled">
+	<li ng-repeat="item in items">
+		<input type="checkbox" ng-model="item.completed">
+		{{item.text}}
+	</li>
+</ul>
+
+<form>
+	<input type="text" ng-model="newItem.text">
+	<button class="btn btn-primary" ng-click="add(newItem)">+</button>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="memoryGameApp">
+<head>
+	<meta charset="utf-8">
+  	<title>Color Matching Game</title>
+  	<link rel="stylesheet" href="stylesheets/foundation.min.css">
+  	<link rel="stylesheet" href="stylesheets/cardstyle.css">
+  	<script src="scripts/angular.js"></script>
+  	<script src="scripts/app.js"></script>
+  	<script src="scripts/game.js"></script>
+</head>
+
+<body ng-controller="GameCtrl">
+	<div><b>Pairs left:</b> {{game.unmatchedPairs}}</div>
+	<div><b>Attempts:</b> {{game.attempts}}</div>
+	<div>Looking for: {{game.firstPick.title|capitalize}}</div>
+
+	<table>
+		<tr ng-repeat="row in game.grid">
+			<td ng-repeat="tile in row" ng-click="game.flipTile(tile)">
+				<div class="container">
+          			<div class="card" ng-class="{flipped: tile.flipped}">
+              			<img class="front" ng-src="images/back.png">
+              			<img class="back" ng-src="images/{{tile.title}}.png">
+          			</div>
+        		</div>
+			</td>
+		</tr>
+	</table>
+
+	<div class="message">{{game.message}}</div>
+
+</body>
+</html>
